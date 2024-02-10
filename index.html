@@ -14,14 +14,15 @@
                 margin: 0;
             }
         </style>
-        <!-- <script type="importmap">
+        <script type="importmap">
             {
-            "imports": {
-                "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+                "imports": {
+                    "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+                    "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/",
+                    "lil-gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.19/+esm"
+                }
             }
-            }
-        </script> -->
+        </script>
         <link rel="stylesheet" href="styles.css" />
     </head>
     <p>Visualization of projection models</p>
@@ -30,7 +31,14 @@
     <a href="https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function"
         >wide angle lens mapping function info</a
     >
-    <p>Scroll down to visualize texture on viewing sphere and imaging planes</p>
+    <p>
+        three.js canvas may take a bit to load due to unoptimized raycasting.
+        TODO: convert three.js raycast calls to vertex shader
+    </p>
+    <p>
+        Scroll down below three.js canvas to visualize texture on viewing sphere
+        and imaging planes
+    </p>
     <body>
         <script type="module" src="/main.js"></script>
     </body>
