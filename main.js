@@ -107,8 +107,8 @@ const plane_material = new THREE.MeshBasicMaterial({
 });
 const plane = new THREE.Mesh(plane_geometry, plane_material);
 plane.position.z = -2;
-plane.scale.x = 6;
-plane.scale.y = 6;
+plane.scale.x = 8;
+plane.scale.y = 8;
 // plane.scale.z = 2;
 plane.updateMatrixWorld();
 scene.add(plane);
