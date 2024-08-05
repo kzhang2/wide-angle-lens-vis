@@ -107,8 +107,8 @@ const plane_material = new THREE.MeshBasicMaterial({
 });
 const plane = new THREE.Mesh(plane_geometry, plane_material);
 plane.position.z = -2;
-plane.scale.x = 8;
-plane.scale.y = 8;
+plane.scale.x = 10;
+plane.scale.y = 10;
 // plane.scale.z = 2;
 plane.updateMatrixWorld();
 scene.add(plane);
@@ -187,19 +187,32 @@ grid.renderOrder = 1;
 const loader = new GLTFLoader();
 loader.load(
   // resource URL
-  "static/models/scene.gltf",
+  "static/models/rubiks_cube/scene.gltf",
+  // "static/models/fumo/scene.gltf",
   // called when the resource is loaded
   function (gltf) {
-    let mesh = gltf.scene.children[0].children[0].children[0]; // hardcoded for reimu
-    mesh.rotation.z = Math.PI;
-    mesh.position.z = -15;
-    mesh.position.y = -10;
+    let loaded_scene = gltf;
+    console.log(loaded_scene);
+    // let mesh = gltf.scene.children[0].children[0].children[0]; // hardcoded for reimu
+    let mesh = gltf.scene.children[0].children[0].children[0].children[0].children[0]; // hardcoded for rubik's cube
+    // mesh.rotation.z = Math.PI;
+    // mesh.position.z = -15;
+    // mesh.position.y = -10;
+
+    mesh.position.z = -8;
+    mesh.position.y = 2;
+    mesh.position.x = -2;
+    mesh.scale.x = 90;
+    mesh.scale.y = 90;
+    mesh.scale.z = 90;
+
     mesh.updateMatrixWorld();
     scene.add(mesh);
 
     let mho = new MeshHelperOptions(scene.children[2], true); // hardcoded index for fumo
     gui.add(mho, "visible").name("mesh visibility");
-
+    console.log(mesh);
+    console.log(mesh.material);
     const texture = mesh.material.map;
     const textureWidth = texture.image.width;
     const textureHeight = texture.image.height;
@@ -406,7 +419,7 @@ loader.load(
     console.log("An error happened");
   },
 );
-console.log(scene.children);
+// console.log(scene.children);
 
 camera.position.z = 5;
 controls.update();
